@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e7b7d697b85842a6963edeade60e5b06" Name="Diagram1" >
+        <EntityTypeShape EntityType="TwitterModel1.Person" Width="1.5" PointX="8.25" PointY="1.875" />
+        <EntityTypeShape EntityType="TwitterModel1.Tweet" Width="1.5" PointX="5.125" PointY="1.5" />
+        <AssociationConnector Association="TwitterModel1.PersonTweet" />
+        <EntityTypeShape EntityType="TwitterModel1.Followers" Width="1.5" PointX="5" PointY="3.875" />
+        <AssociationConnector Association="TwitterModel1.PersonFollowers" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

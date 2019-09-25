@@ -1,0 +1,109 @@
+﻿@model MyTwitter.Models.EditProfile
+@{
+    if (ViewContext.IsChildAction != true && !Request.IsAjaxRequest())
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
+    }
+    else
+    {
+        Layout = null;
+    }
+}
+@{
+    ViewBag.Title = "login";
+}
+<script type="text/javascript" language="javascript">
+    var urlContent = "@Url.Content("~/")";
+    window.onload = function window_OnLoad() {
+        nobackhfive();
+    }
+</script>
+<style>
+
+    .wrapper {
+        margin: 0 auto;
+    }
+
+    .contentSignin {
+        background-color: lightskyblue;
+        width: 400px;
+        height: 330px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border-radius: 9px;
+    }
+
+    .innercontent {
+        padding: 18px;
+    }
+
+    .HeaderSignin {
+        background-color: #2ba6cb;
+        border-top-left-radius: 9px;
+        border-top-right-radius: 9px;
+        height: 51px;
+        align-items: center;
+    }
+    .btn-primary {
+        font-family: Raleway-SemiBold;
+        font-size: 13px;
+        color: rgba(58, 133, 191, 0.75);
+        letter-spacing: 1px;
+        line-height: 15px;
+        border: 2px solid rgba(58, 133, 191, 0.75);
+        border-radius: 40px;
+        background: transparent;
+        transition: all 0.3s ease 0s;
+    }
+
+        .btn-primary:hover {
+            color: #FFF;
+            background: rgba(58, 133, 191, 0.75);
+            border: 2px solid rgba(58, 133, 191, 0.75);
+        }
+
+</style>
+
+<div class="row">
+    <div class="col-sm-6">        
+        
+        <img src="~/Images/twitter1.PNG" class="img-responsive" />
+    </div>
+    <div class="col-sm-6">
+    @using (Html.BeginForm("login", "Login", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="innercontent">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-inline">
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.userName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Username" } })
+                    @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
+
+                    @Html.PasswordFor(model => model.passWord, new { @class = "form-control", @placeholder = "Password" })
+                    @Html.ValidationMessageFor(model => model.passWord, "", new { @class = "text-danger" })
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                </div>                                                   
+            </div>
+            <div>
+                <img src="~/Images/twitter2.png" class="img-circle" style="height:30%;width:20%"/>
+                <h1>See what's happening in the world right now</h1>
+
+                <h2>Join Twitter Today</h2>
+                @Html.ActionLink("SignUp", "SignUp", "Login", new { @class = "btn btn-primary btn-block" })
+                @if (ViewBag.Invalidlogin != null && ViewBag.Invalidlogin != string.Empty)
+                {
+                    <h5 class="alert-danger">@ViewBag.Invalidlogin</h5>
+                }
+            </div>            
+        </div>
+
+    }
+    </div>
+</div>
